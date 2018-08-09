@@ -17,20 +17,28 @@ def refresh_decks_function():
 	# We add all cards from AllCards.json to the databse
 	with app.app_context():
 		# put in the worker to refresh the mtgo scraper 
-		scraper = Mtgtop8_Scraper()
 		xls_parser = XlsParser()
+		xls_parser.clear_deck_xls_files()
+		os.mkdir('./py/data/deck_data')
+		scraper = Mtgtop8_Scraper()
+		
 		starttime = time.time()
 		print("tick")
 		# wipe deck data here
 		# remember you need to delete the decks from the database and 
 		# also clear the entire './data/deck_data' directory
-		db.session.query(Deck).delete()
-		db.session.query(DeckCard).delete()
-		db.session.query(Event).delete()
-		xls_parser.clear_deck_xls_files()
+		
+
+		# this query is a cascade delete too
+		decks = Deck.query.all()
+		for deck in decks:
+			db.session.delete(deck)
+		db.session.commit()
+		
 		# save the new decks with scraper 
 		print('save')
-		os.mkdir('./py/data/deck_data')
+
+		
 		scraper.save_modern_decks_fast()
 		print('load')
 		xls_parser.load_decks_to_db()

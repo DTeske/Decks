@@ -26,7 +26,13 @@ def create_app(env = "TEST"):
 	return app
 
 
-app = create_app(env = "DEV")
+DATABASE_URI = os.environ.get('DATABASE_URI')
+if DATABASE_URI is None:
+	ENV = "TEST"
+else:
+	ENV = "DEV"
+
+app = create_app(env = ENV)
 os.environ['SECRET_KEY'] = app.config['SECRET_KEY']
 db.init_app(app) 
 app.register_blueprint(api, url_prefix='/api')

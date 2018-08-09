@@ -82,6 +82,7 @@ export default class SearchTab extends React.Component {
 									<td>{card.card.name}</td>
 									<td>
 										<QuantityCounter
+											key = {card.card_id}
 											value={card.quantity}
 											onDownClick={() =>
 												this.updateCardQuantity(

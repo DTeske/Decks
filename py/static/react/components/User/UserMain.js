@@ -30,21 +30,21 @@ export default class UserMain extends React.Component {
 						<li
 							role="presentation"
 							onClick={() => this.setState({ tab_index: COLLECTION_INDEX })}
-							className={tab_index == COLLECTION_INDEX && 'active'}
+							className={tab_index == COLLECTION_INDEX ? 'active' : ''}
 						>
 							<a href="#">COLLECTION</a>
 						</li>
 						<li
 							role="presentation"
 							onClick={() => this.setState({ tab_index: SEARCH_INDEX })}
-							className={tab_index == SEARCH_INDEX && 'active'}
+							className={(tab_index == SEARCH_INDEX) ? 'active' : ''}
 						>
 							<a href="#">SEARCH</a>
 						</li>
 						<li
 							role="presentation"
 							onClick={() => this.setState({ tab_index: DECK_INDEX })}
-							className={tab_index == DECK_INDEX && 'active'}
+							className={tab_index == DECK_INDEX ? 'active' : ''}
 						>
 							<a href="#">DECKS</a>
 						</li>

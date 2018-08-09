@@ -1,12 +1,2 @@
-# Decks
-
-# Virtual Environment
-The following code will start the virtual environment
-```
-source venv/bin/activate
-```
-
-The following code will stop the virtual environment
-```
-deactivate
-```
+# Good Decks for Us
+Web platform that allows users to input and save their collection. Also provides which combinations of modern decks can be made given their collection. 

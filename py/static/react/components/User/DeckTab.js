@@ -179,23 +179,23 @@ export default class DeckTab extends React.Component {
 							<th>Archetype
 								<select onChange={this.change_archetype_filter.bind(this)}>
 									{this.dropDown.map((archetype) => (
-										<option value = {archetype}>{archetype}</option>
+										<option value = {archetype}>{archetype.replace("\\", "")}</option>
 										))
 									}
 								</select>
 							</th>
 							<th>Url </th>
-							<th>Check Out Deck</th>
-							<th>missing_cards</th>
+							<th>Complete Deck</th>
+							<th>Missing Cards</th>
 						</tr>
 					</thead>
 					<tbody>
 							{this.state.displayed_decks.map((deck,index) => (
 								<tr>
 									<td>
-									{deck.archetype}
+									{deck.archetype.replace("\\", "")}
 									</td>
-									<td><a href = {deck.url}>{deck.name}</a></td>
+									<td><a href = {deck.url}>{deck.name.replace("\\", "").replace("-","")}</a></td>
 									<td>
 										<CurrentDecks
 										deck_id = {deck.deck_id}
@@ -225,7 +225,7 @@ export default class DeckTab extends React.Component {
 					)}
 				{this.state.page === this.state.num_pages ? (<span>Next</span>):(
 					<button type="button" onClick={() => this.update_page(this.state.page + 1)}>
-							<span class="grey"> Next </span>
+							<span > Next </span>
 					</button>
 					)}
 					<span> Page: {this.state.page} / {this.state.num_pages}</span>

@@ -30,7 +30,7 @@ class Event(db.Model):
 	# http://www.mtgtop8.com/event?e=19120&d=320734&f=LE
 	event_id = db.Column(db.Integer, primary_key=True, unique = True)
 	decks = db.relationship(TableNames.Deck, backref = "event", lazy = True,
-		primaryjoin="Event.event_id == Deck.event_id")
+		primaryjoin="Event.event_id == Deck.event_id", cascade = "all,delete")
 
 	event_format = db.Column(db.String)
 	name = db.Column(db.String)
@@ -57,9 +57,9 @@ class Deck(db.Model):
 
 	deck_id = db.Column(db.Integer, primary_key=True, unique = True)
 
-	main_deck = db.relationship(TableNames.DeckCard, lazy = True,
+	main_deck = db.relationship(TableNames.DeckCard, lazy = True, cascade = "all,delete",
 		primaryjoin="and_(Deck.deck_id == DeckCard.deck_id, DeckCard.is_main_deck == True)")
-	sideboard = db.relationship(TableNames.DeckCard, lazy = True,
+	sideboard = db.relationship(TableNames.DeckCard, lazy = True, cascade = "all,delete",
 		primaryjoin="and_(Deck.deck_id == DeckCard.deck_id, DeckCard.is_main_deck == False)")
 
 	event_id = db.Column(db.Integer, db.ForeignKey(TableNames.Event + '.event_id'), nullable = False)

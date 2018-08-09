@@ -16,10 +16,12 @@ export default class CurrentDecks extends React.Component {
 				<div className="col-xs-3">
 				{this.props.has_deck == true ? (
 					<button type="button" onClick={this.props.onUpClick}>
-						<span className="glyphicon glyphicon-plus" />
+						<span className="glyphicon glyphicon-plus"  />
 					</button>
 				):
-					<span className="glyphicon glyphicon-plus" />
+					<button type=  "button" disabled ={true} className = "disabled-button">
+						<span className="glyphicon glyphicon-plus" />
+					</button>
 				}
 				</div>
 			</div>

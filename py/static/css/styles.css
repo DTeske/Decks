@@ -5,3 +5,8 @@
 .grey {
 	opacity: 0.5
 }
+
+.disabled-button {
+	cursor: no-drop !important;
+	opacity: 0.4;
+}
