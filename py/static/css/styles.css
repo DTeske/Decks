@@ -33,7 +33,7 @@
 #login_container {
 	padding-top: 90px;
 	background-image: url(../img/jace.jpg);
-	background-size: 100%;
+	background-size: cover;
 	background-position: 10;
 	height: 100vh;
 }
