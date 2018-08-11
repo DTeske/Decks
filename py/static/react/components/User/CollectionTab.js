@@ -64,6 +64,7 @@ export default class SearchTab extends React.Component {
 		var tab_index = this.state.tab_index
 		return (
 			<div className={this.props.selected ? '' : 'hidden'}>
+				<p className="tooltips"> This is the collection tab and it contains your collection of cards. Your collection can be used to make <b><i>decks</i></b> over in the Decks Tab!</p>
 				<div className="row">
 					<form
 						className="navbar-form navbar-left"

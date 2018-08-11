@@ -50,6 +50,7 @@ export default class SearchTab extends React.Component {
 		var tab_index = this.state.tab_index
 		return (
 			<div className={this.props.selected ? '' : 'hidden'}>
+				<p className="tooltips"> This is the SearchTab. In this tab you can <b><i> add </i></b> or <b><i> remove </i></b> cards in your collection. <br/> These changes will <b> persist </b> throughout multiple sessions! </p>
 				<div className="row">
 					<form
 						className="navbar-form navbar-left"

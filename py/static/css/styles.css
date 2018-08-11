@@ -11,8 +11,23 @@
 	opacity: 0.4;
 }
 
+.paddingRight{
+	padding-right: 10px;
+}
 .panel {
 	opacity: 0.9;
+}
+
+.tooltips {
+	font-size: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.tooltips1 {
+	font-size: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 #login_container {

@@ -151,6 +151,7 @@ export default class DeckTab extends React.Component {
 		return (
 			<div className={this.props.selected ? '' : 'hidden'}>
 				<div> 
+				<p className="tooltips1"> This tab contains a list of modern decks from mtgtop8.com. You can sort the decks by archetype, or you can search for the deck you want by using the prev and next page buttons below. For any given deck, the 'missing cards' button will show you all the cards that are missing from your collection that you need to complete the deck. Once you have all the cards for a deck, you will be able to click the 'complete deck' button. This button will <b><i>TEMPORARILY</i></b> remove the cards from your collection and you will have successfully checked out the deck. Nice! </p>
 				<table className="table table-bordered">
 					<thead>
 						<tr>
@@ -176,8 +177,8 @@ export default class DeckTab extends React.Component {
 				<table className="table table-bordered">
 					<thead>
 						<tr>
-							<th>Archetype
-								<select onChange={this.change_archetype_filter.bind(this)}>
+							<th><span className="paddingRight">Archetype</span>
+								<select  onChange={this.change_archetype_filter.bind(this)}>
 									{this.dropDown.map((archetype) => (
 										<option value = {archetype}>{archetype.replace("\\", "")}</option>
 										))
@@ -218,17 +219,19 @@ export default class DeckTab extends React.Component {
 					</tbody>
 				</table>
 				<tr>
-				{this.state.page === 1 ? (<span>Prev </span>):(
-				<button type="button" onClick={() => this.update_page(this.state.page - 1)}>
+				{this.state.page === 1 ? (<button type="button" disabled={true} className="btn btn-default disabled-button" ><span>Prev </span></button>):(
+				<button type="button" className="btn btn-default" onClick={() => this.update_page(this.state.page - 1)}>
 							<span> Prev </span>
 					</button>
 					)}
-				{this.state.page === this.state.num_pages ? (<span>Next</span>):(
-					<button type="button" onClick={() => this.update_page(this.state.page + 1)}>
+				{this.state.page >= this.state.num_pages ? (<button type="button" disabled={true} className="btn btn-default disabled-button" ><span>Next</span></button>):(
+					<button type="button" className="btn btn-default" onClick={() => this.update_page(this.state.page + 1)}>
 							<span > Next </span>
 					</button>
 					)}
+					
 					<span> Page: {this.state.page} / {this.state.num_pages}</span>
+					
 				</tr>
 				</div>
 			</div>
