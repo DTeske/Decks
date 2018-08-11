@@ -22,7 +22,11 @@ export default class Login extends React.Component {
 	}
 
 	handleResponse(resp) {
-		this.props.updateUser(resp.user)
+		if (resp.success) {
+			this.props.updateUser(resp.user)
+		} else {
+			alert("Invalid attempt. Check your inputs.")
+		}
 	}
 
 	loginUser() {
@@ -46,56 +50,106 @@ export default class Login extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="row">
-					<div className="row">Login Please</div>
+			<div id = "login_container">
+				<div className="container" >
 					<div className="row">
-						<input placeholder="username" name="username" onChange={this.onChange} />
-					</div>
-					<div className="row">
-						<input
-							type="password"
-							placeholder="password"
-							name="password"
-							onChange={this.onChange}
-						/>
-					</div>
-					<div className="row">
-						<button type="button" onClick={this.loginUser.bind(this)}>
-							Login
-						</button>
-					</div>
-				</div>
+						<div className="col-md-6 col-md-offset-3">
+							<div className="panel panel-login">
+								<div className="panel-heading">
+									<div className="row">
+										<div className="col-xs-12">
+											<span className = "welcome-text">
+												Welcome to Good Decks!
+											</span>
+										</div>
+									</div>
+									<div className="row">
+										<div className="col-xs-12">
+											<span className = "description-text">
+												Input your collection and we help you make the best decks you can.
+											</span>
+										</div>
+									</div>
+								</div>
+								<div className="panel-heading">
+									<div className="row">
+										<div className="col-xs-6">
+											<a href="#" className="active" id="login-form-link">Login</a>
+										</div>
+										<div className="col-xs-6">
+											<a href="#" id="register-form-link">Register</a>
+										</div>
+									</div>
+									<hr/>
+								</div>
+								<div className="panel-body">
+									<div className="row">
+										<div className="col-lg-12">
+											<form 
+											onSubmit = {(e) => e.preventDefault()}
+											id="login-form"  method="post" role="form" style={{"display" : "block"}}>
+												<div className="form-group">
+													<input type="text"
+														name="username" onChange={this.onChange} 
+													  id="username" tabIndex="1" className="form-control" placeholder="Username"/>
+												</div>
+												<div className="form-group">
+													<input 
+													type="password"
+													name="password"
+													onChange={this.onChange}
+													 id="password" tabIndex="2" className="form-control" placeholder="Password"/>
+												</div>
+												<div className="form-group">
+													<div className="row">
+														<div className="col-sm-6 col-sm-offset-3">
+															<input 
+															onClick = {this.loginUser.bind(this)}
 
-				<div className="row">
-					<div className="row">Create Account </div>
-					<div className="row">
-						<input
-							placeholder="username"
-							name="create_username"
-							onChange={this.onChange}
-						/>
-					</div>
-					<div className="row">
-						<input
-							type="password"
-							placeholder="password"
-							name="create_password"
-							onChange={this.onChange}
-						/>
-					</div>
-					<div className="row">
-						<input
-							type="password"
-							placeholder="confirm password"
-							name="create_password_confirm"
-							onChange={this.onChange}
-						/>
-					</div>
-					<div className="row">
-						<button type="button" onClick={this.registerUser.bind(this)}>
-							Register
-						</button>
+															type="submit" name="login-submit" id="login-submit" tabIndex="4" className="form-control btn btn-login submit-button" value="Log In"/>
+														</div>
+													</div>
+												</div>
+												
+											</form>
+											<form id="register-form" onSubmit = {(e) => e.preventDefault()} method="post" role="form" style={{"display": "none"}}>
+												<div className="form-group">
+													<input 
+													placeholder="Username"
+								name="create_username"
+								onChange={this.onChange}
+								type="text"  id="create_username" tabIndex="1" className="form-control"/>
+												</div>
+												<div className="form-group">
+													<input 
+													type="password"
+								name="create_password"
+								onChange={this.onChange}
+													 id="create_password" tabIndex="2" className="form-control" placeholder="Password"/>
+												</div>
+												<div className="form-group">
+													<input 
+														type="password"
+								
+								name="create_password_confirm"
+								onChange={this.onChange}
+								id="confirm-password" tabIndex="2" className="form-control" placeholder="Confirm Password"/>
+												</div>
+												<div className="form-group">
+													<div className="row">
+														<div className="col-sm-6 col-sm-offset-3">
+															<input 
+															onClick={this.registerUser.bind(this)}
+															type="submit" name="register-submit" id="register-submit" tabIndex="4" className="form-control btn btn-register submit-button" value="Register Now"/>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

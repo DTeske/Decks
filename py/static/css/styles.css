@@ -10,3 +10,36 @@
 	cursor: no-drop !important;
 	opacity: 0.4;
 }
+
+.panel {
+	opacity: 0.9;
+}
+
+#login_container {
+	padding-top: 90px;
+	background-image: url(../img/dlord.jpg);
+	background-size: 100%;
+	height: 100vh;
+}
+
+.welcome-text {
+	font-size: 24px !important;
+}
+
+.description-text {
+	font-size : 16px !important;
+}
+
+body {
+	padding-top: 0px !important;
+}
+	
+
+.submit-button {
+	background-color : skyblue !important;
+	color: white !important;
+}
+
+.submit-button:hover {
+	background-color: green !important;
+}

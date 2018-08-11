@@ -54,12 +54,12 @@ def add_header(response):
 	return response
 
 
-@app.errorhandler(404)
-def page_not_found(error):
-	"""
-	: Returns an error page, leaving option to report this error somehow later
-	"""
-	return render_template("error_page.html")
+# @app.errorhandler(404)
+# def page_not_found(error):
+# 	"""
+# 	: Returns an error page, leaving option to report this error somehow later
+# 	"""
+# 	return render_template("error_page.html")
 
 
 @app.errorhandler(405)
@@ -77,7 +77,7 @@ def internal_server_error(error):
 	return "No Thanks"
 
 
-@app.route('/app/static/<path:path>', methods = ['GET'])
+@app.route('/static/<path:path>', methods = ['GET'])
 def send_static(path):
 	"""
 	: This route allows static files to be retrieved from the server
